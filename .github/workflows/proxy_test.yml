@@ -7,4 +7,9 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-    
+    - run: |
+        apt install -y git
+      if: always()
+    - uses: actions/checkout@v2
+      if: always()
+      
