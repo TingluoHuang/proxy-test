@@ -1,6 +1,6 @@
 name: Proxy Test
 
-on: [issue_comment]
+on: [issues]
 
 jobs:
   proxy_test:
