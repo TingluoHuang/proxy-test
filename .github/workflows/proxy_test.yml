@@ -8,8 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        apt install -y git
-        echo ::add-path::$(dirname $(which git))
+        add-apt-repository ppa:git-core/ppa
+        apt-get update
+        apt-get install -y git
       if: always()
     - uses: actions/checkout@v2
       if: always()
