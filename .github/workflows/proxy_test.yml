@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-        add-apt-repository ppa:git-core/ppa
+        apt-get add-apt-repository ppa:git-core/ppa
         apt-get update
         apt-get install -y git
       if: always()
