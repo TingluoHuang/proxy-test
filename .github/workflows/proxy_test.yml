@@ -12,6 +12,7 @@ jobs:
         cat README.md
         cd ..
         rm -rf ${{ github.workspace }}
+        mkdir ${{ github.workspace }}
     - run: |
         apt-get update
         apt-get install -y software-properties-common
@@ -23,4 +24,5 @@ jobs:
         cat README.md
         cd ..
         rm -rf ${{ github.workspace }}
+        mkdir ${{ github.workspace }}
       
