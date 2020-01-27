@@ -7,13 +7,19 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-      if: always()
     - run: |
+        cat README.md
+        cd ..
+        rm -rf ${{ github.workspace }}
+    - run: |
+        apt-get update
         apt-get install -y software-properties-common
         apt-add-repository ppa:git-core/ppa
         apt-get update
         apt-get install -y git
-      if: always()
     - uses: actions/checkout@v2
-      if: always()
+    - run: |
+        cat README.md
+        cd ..
+        rm -rf ${{ github.workspace }}
       
