@@ -14,10 +14,10 @@ jobs:
         run: cat README.md
 
       # Checkout using Git
-      - name: Clean
-        run: ./reset-workspace.sh
       - name: Install Git
         run: ./install-git.sh
+      - name: Clean
+        run: ./reset-workspace.sh
       - name: Checkout using Git
         uses: actions/checkout@v2
       - name: Verify files
