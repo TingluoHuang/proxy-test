@@ -7,23 +7,34 @@ jobs:
   proxy_test:
     runs-on: self-hosted
     steps:
-    - run: ./reset-workspace.sh
-    - uses: actions/checkout@v2
-    - run: |
-        cat README.md
-        cd ..
-        rm -rf ${{ github.workspace }}
-        mkdir ${{ github.workspace }}
-    - run: |
-        apt-get update
-        apt-get install -y software-properties-common
-        apt-add-repository ppa:git-core/ppa
-        apt-get update
-        apt-get install -y git
-    - uses: actions/checkout@v2
-    - run: |
-        cat README.md
-        cd ..
-        rm -rf ${{ github.workspace }}
-        mkdir ${{ github.workspace }}
-      
+      # Cleanup from previous run
+      - name: Clean
+        run: ./reset-workspace.sh
+
+      # Checkout using REST API
+      - name: Checkout using REST API
+        uses: actions/checkout@v2
+      - name: Verify files
+        run: cat README.md
+
+      # Checkout using Git
+      - name: Clean
+        run: ./reset-workspace.sh
+      - name: Install Git
+        run: ./install-git.sh
+      - name: Checkout using Git
+        uses: actions/checkout@v2
+      - name: Verify files
+        run: cat README.md
+
+      # Setup Node.js
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: Verify node and npm
+        run: ./verify-node.sh 10
+
+      # Cleanup
+      - name: Clean
+        run: ./reset-workspace.sh
