@@ -7,6 +7,7 @@ jobs:
   proxy_test:
     runs-on: self-hosted
     steps:
+    - run: ./reset-workspace.sh
     - uses: actions/checkout@v2
     - run: |
         cat README.md
