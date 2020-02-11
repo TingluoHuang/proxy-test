@@ -7,10 +7,6 @@ jobs:
   proxy_test:
     runs-on: self-hosted
     steps:
-      # Cleanup from previous run
-      - name: Clean
-        run: ./reset-workspace.sh
-
       # Checkout using REST API
       - name: Checkout using REST API
         uses: actions/checkout@v2
