@@ -9,7 +9,7 @@ jobs:
     steps:
       # Checkout using REST API
       - name: Checkout using REST API
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Verify files
         run: cat README.md
 
@@ -19,17 +19,17 @@ jobs:
       - name: Clean
         run: ./reset-workspace.sh
       - name: Checkout using Git
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Verify files
         run: cat README.md
 
       # Setup Node.js
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 10.x
+          node-version: 16
       - name: Verify node and npm
-        run: ./verify-node.sh 10
+        run: ./verify-node.sh 16
 
       # Cleanup
       - name: Clean
